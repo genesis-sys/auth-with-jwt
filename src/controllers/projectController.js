@@ -8,7 +8,7 @@ const router = Router();
 router.use(authMidleware);
 
 router.get("/", (req, res) => {
-  return res.send({ ok: true });
+  return res.send({ ok: true, user: req.userId });
 });
 
 module.exports = (app) => app.use("/projects", router);
