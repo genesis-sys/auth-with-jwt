@@ -1,5 +1,5 @@
 const mongoose = require("../database");
-const bcrypt = require("bcrypt")
+const bcrypt = require("bcrypt");
 
 /**
  * cria o schema do user para autenticação
@@ -28,16 +28,16 @@ const UserSchema = mongoose.Schema({
 });
 
 /*
-* antes de salvar encripta a senha
-* this: refere-se ao user
-*/
+ * antes de salvar encripta a senha
+ * this: refere-se ao user
+ */
 
-UserSchema.pre('save', await function(next){
+UserSchema.pre("save", async function (next) {
   const hash = await bcrypt.hash(this.password, 10);
-  this.password = hash
+  this.password = hash;
 
-  next()
-})
+  next();
+});
 
 const User = mongoose.model("User", UserSchema);
 
