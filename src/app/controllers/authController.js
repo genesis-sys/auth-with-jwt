@@ -76,7 +76,7 @@ routes.post("/forgot_password", async (req, res) => {
             .send({ error: "cannot send forgot password email" });
         }
 
-        return res.send();
+        return res.send({ status: " Verifique a sua caixa de email email " });
       }
     );
   } catch (err) {
